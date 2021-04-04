@@ -1,0 +1,25 @@
+<h2>New book</h2>
+<!--<%= flash[:error] %>-->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+
+
+<%= form_with model: @book, url:'/books', local:true do |f| %>
+   
+  <div class="field">
+  <lavel for="book_title">Title</lavel>
+  <%= f.text_field :title %>
+  </div>
+  <div class="field">
+  <lavel for="book_body">Body</lavel>
+  <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+  <%= f. submit 'Create Book' %>
+  </div>
+<% end %>
