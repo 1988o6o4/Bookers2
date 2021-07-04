@@ -9,12 +9,11 @@ redirect_to book_path(book.id)
 end
 
 def destroy
-@book_comment = current_user.comments.find(params[:id])
-comment.destroy
-redirect_to book_path(book.id)
+BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
+redirect_to book_path(params[:book_id])
 end
 
-private 
+private
 def book_comment_params
 params.require(:book_comment).permit(:comment)
 end
