@@ -22,6 +22,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
   <ul class="navbar-nav ml-auto">
   <% if user_signed_in? %>
+  <!--＃userがsign_inしているかの確認、していればelseより上してなければ下(devise側のメゾット)-->
   <li class="navitem">
   <%= link_to "Home", user_path(current_user.id), class: 'fas fa-home nav-link text-light' %>
   </li>
@@ -34,6 +35,16 @@
   <li class="navitem">
   <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %>
   </li>
+  <%= form_with url:search_path, method: :get, local: true do |f| %>
+  <!--＃参照先URL, 閲覧のみ, ？-->
+  <%= f.text_field 'search[value]' %>
+  <!--＃？-->
+  <%= f.select 'search[model]', options_for_select({"User" => "user", "Book" => "book"}) %>
+  <!--＃f.selectとoptions_for_selectでプルダウンが可能になる、search[model]で探すのはモデル、User検索表示名userモデル名を指定-->
+  <%= f.select 'search[how]', options_for_select({"完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"}) %>
+  <!--＃表示名＝＞変数-->
+  <%= f.submit "検索" %>
+  <% end %>
   <% else %>
 
   <!--<header class="shadow-sm">-->
