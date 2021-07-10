@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'search/search'
-  devise_for :users, controller: {sessions: 'users/sessions', registration: 'users/registration'}
+devise_for :users, controller: {sessions: 'users/sessions', registration: 'users/registration'}
 root to: 'homes#top'
 get 'home/about' => 'homes#about'
 get '/search' => 'search#search'

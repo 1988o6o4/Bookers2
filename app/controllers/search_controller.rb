@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def search
-  @modle = params["search"] ["modle"]
+  @modle = params["search"] ["model"]
   # ＃選択したモデルを@modleに代入
   @value = params["search"] ["value"]
   # ＃検索にかけた文字列を@valueに代入
