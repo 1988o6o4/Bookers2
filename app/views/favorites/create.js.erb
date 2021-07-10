@@ -1,0 +1,4 @@
+<!--＃alert('いいねが押せている！');-->
+<!--＃アラートが表示できるかの確認-->
+<%# app/views/likes/create.js.erb %>
+document.getElementById('favorite_<%= @book.id %>').innerHTML = '<%= escape_javascript(render "favorites/favorites", book: @book) %>'

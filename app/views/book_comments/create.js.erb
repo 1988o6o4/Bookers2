@@ -1,0 +1,3 @@
+document.getElementById('book_comment_<%= @book.id %>').innerHTML = '<%= escape_javascript(render "book_comments/book_comments", book: @book, user: @user, book_comment: @book_comment) %>'
+$("#book_comment_comment").val("");
+<!--＃値を残さない、他に記述の方法は？-->
